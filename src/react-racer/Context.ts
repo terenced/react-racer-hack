@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-export const ReactRacerContext = createContext(null)
+const ReactRacerContext = createContext(null)
 
 if (process.env.NODE_ENV !== 'production') {
   ReactRacerContext.displayName = 'ReactRacer'

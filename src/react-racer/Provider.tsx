@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as racer from "racer";
 
 import ReactRacerContext from "./Context";
 

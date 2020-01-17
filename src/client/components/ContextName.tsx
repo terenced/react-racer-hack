@@ -1,10 +1,16 @@
 import * as React from "react";
-import RacerContext from "../react-racer/Context";
+import ReactRacerContext from "../../react-racer/Context";
 
 const ContextName = () => {
-  const context = React.useContext(RacerContext);
-  console.log("context", context);
-  return <div>{context?.displayName}</div>;
+  const context = React.useContext(ReactRacerContext);
+  const events = context.$model.root.eventNames();
+  return (
+    <ul>
+      {events.map(e => (
+        <li key={e}>{e}</li>
+      ))}
+    </ul>
+  );
 };
 
 export default ContextName;

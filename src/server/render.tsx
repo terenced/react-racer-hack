@@ -2,9 +2,12 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 
 import App from "../client/components/App";
+import createRacerStore from "../react-racer/createRacerStore";
 
-export default (racerData) => {
-  const content = renderToString(<App racer={racerData} />);
+export default (racerBundle) => {
+  const content = renderToString(
+    <App store={createRacerStore(racerBundle)} />
+  );
 
   return `
   <!DOCTYPE html>
@@ -15,7 +18,7 @@ export default (racerData) => {
     </head>
     <body>
       <div id="app">${content}</div>
-      <script id="data-bundle" type="application/json">${racerData}</script>
+      <script id="racer-data-bundle" type="application/json">${racerBundle}</script>
       <script src="/dist/client.js"></script>
     </body>
   </html>
