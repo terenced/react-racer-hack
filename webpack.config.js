@@ -37,58 +37,19 @@ const common = {
 
 const serverConfig = {
   target: 'node',
+  externals: [webpackNodeExternals()],
   entry: {
     server: "./src/server/index.ts"
   },
   ...common,
-  //…
 };
 
 const clientConfig = {
-  target: 'web', // <=== can be omitted as default is 'web'
+  target: 'web',
   entry: {
     client: "./src/client/index.tsx",
   },
   ...common
-  //…
 };
 
 module.exports = [ serverConfig, clientConfig ];
-
-// module.exports = {
-//   target: 'web',
-//   mode: "development",
-//   entry: {
-//     client: "./src/client/index.tsx",
-//     server: "./src/server/index.ts"
-//   },
-//   devtool: "inline-source-map",
-//   module: {
-//     rules: [
-//       {
-//         test: /\.ts|\.tsx$/,
-//         use: "ts-loader",
-//         exclude: /node_modules/,
-//       },
-//       {
-//         test: /\.css$/,
-//         loader:
-//           "css/locals?module&localIdentName=[name]__[local]___[hash:base64:5]",
-//         exclude: /node_modules/
-//       }
-//     ]
-//   },
-//   resolve: {
-//     extensions: [".ts", ".tsx", ".js"],
-//     plugins: [
-//       new TsconfigPathsPlugin({
-//         configFile: path.join(__dirname, "tsconfig.json")
-//       })
-//     ]
-//   },
-//   output: {
-//     filename: "[name].js",
-//     path: __dirname + "/dist"
-//   },
-//   externals: [webpackNodeExternals()]
-// };
