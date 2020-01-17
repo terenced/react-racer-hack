@@ -1,9 +1,9 @@
 import * as React from "react";
-import ReactRacerContext from "../../react-racer/Context";
+import { useModel } from "../../react-racer/hooks/useModel";
 
 const ContextName = () => {
-  const context = React.useContext(ReactRacerContext);
-  const events = context.$model.root.eventNames();
+  const $model = useModel();
+  const events = $model.root.eventNames();
   return (
     <ul>
       {events.map(e => (
