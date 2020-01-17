@@ -2,15 +2,15 @@ import * as React from "react";
 import Provider from "../react-racer/Provider";
 import ContextName from "./ContextName";
 
-const App = (racer) => {
+const App = ({ store }) => {
   return (
-    <Provider value={racer}>
+    <Provider value={store}>
       <div>
         Hello Dude!
         <ContextName />
       </div>
     </Provider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

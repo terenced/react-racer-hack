@@ -1,14 +1,9 @@
-import * as React from 'react';
-import { hydrate } from 'react-dom';
-import * as Racer from "racer";
+import * as React from "react";
+import { hydrate } from "react-dom";
 
 import App from "./components/App";
+import createRacerStore from "./react-racer/createRacerStore";
 
-const racerDataBundle = document.querySelector('#data-bundle');
+const store = createRacerStore("#data-bundle");
 
-// Why is Racer.Model.unbundle is undefined? O_o
-const model = new Racer.Model();
-model.unbundle(JSON.parse(racerDataBundle.innerHTML));
-
-console.log("racerModel", model);
-hydrate(<App racer={model} />, document.querySelector('#app'));
+hydrate(<App store={store} />, document.querySelector("#app"));
