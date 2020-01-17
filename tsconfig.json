@@ -1,0 +1,20 @@
+{
+  // "extends": "./node_modules/ts-config-react-app/index",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./src",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+  },
+  "include": [
+    "src/**/*.ts", 
+    "src/**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
