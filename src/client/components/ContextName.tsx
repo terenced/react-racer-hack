@@ -1,5 +1,5 @@
 import * as React from 'react'
-import RacerContext from "../racer/Context";
+import RacerContext from "../react-racer/Context";
 
 const ContextName = () => {
   const context = React.useContext(RacerContext);

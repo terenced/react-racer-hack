@@ -1,5 +1,5 @@
 import * as React from "react";
-import Provider from "../racer/Provider";
+import Provider from "../react-racer/Provider";
 import ContextName from "./ContextName";
 
 const App = (racer) => {

@@ -4,7 +4,6 @@ import render from "./render";
 import * as shareDbMongo from "sharedb-mongo";
 
 const racer = require("racer");
-console.log("racer", racer);
 
 racer.use(require("racer-bundle"));
 const backend = racer.createBackend({
