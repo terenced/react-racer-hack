@@ -7,7 +7,8 @@ import App from "./components/App";
 const racerDataBundle = document.querySelector('#data-bundle');
 
 // Why is Racer.Model.unbundle is undefined? O_o
-const racerModel = Racer.Model.unbundle(JSON.parse(racerDataBundle.innerHTML));
+const model = new Racer.Model();
+model.unbundle(JSON.parse(racerDataBundle.innerHTML));
 
-console.log("racerModel", racerModel);
-hydrate(<App racer={racerModel} />, document.querySelector('#app'));
+console.log("racerModel", model);
+hydrate(<App racer={model} />, document.querySelector('#app'));
