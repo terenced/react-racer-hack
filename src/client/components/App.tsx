@@ -1,13 +1,13 @@
 import * as React from "react";
 import Provider from "../../react-racer/components/Provider";
-import ContextName from "./ContextName";
+import SampleValues from "./SampleValues";
 
 const App = ({ store }) => {
   return (
     <Provider value={store}>
       <div>
         Hello Dude!
-        <ContextName />
+        <SampleValues />
       </div>
     </Provider>
   );
