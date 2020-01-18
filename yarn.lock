@@ -2676,6 +2676,11 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
+extend@^2.0.0:
+  version "2.0.2"
+  resolved "https://npm.lever.co/extend/-/extend-2.0.2.tgz#1b74985400171b85554894459c978de6ef453ab7"
+  integrity sha512-AgFD4VU+lVLP6vjnlNfF7OeInLTyeyckCNPEsuxz1vi786UuK/nk6ynPuhn/h+Ju9++TQyr5EpLRI14fc1QtTQ==
+
 extend@~3.0.2:
   version "3.0.2"
   resolved "https://npm.lever.co/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
@@ -4465,6 +4470,11 @@ opn@^5.5.0:
   dependencies:
     is-wsl "^1.1.0"
 
+options@>=0.0.5:
+  version "0.0.6"
+  resolved "https://npm.lever.co/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
+  integrity sha1-7CLTEoBrtT5zF3Pnza788cZDEo8=
+
 original@^1.0.0:
   version "1.0.2"
   resolved "https://npm.lever.co/original/-/original-1.0.2.tgz#e442a61cffe1c5fd20a65f3261c26663b303f25f"
@@ -4919,14 +4929,6 @@ querystringify@^2.1.1:
   resolved "https://npm.lever.co/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
 
-racer-browserchannel@^0.5.0:
-  version "0.5.0"
-  resolved "https://npm.lever.co/racer-browserchannel/-/racer-browserchannel-0.5.0.tgz#2cbe3a7e94ed7ec6f21e762b98f55e618735e487"
-  integrity sha1-LL46fpTtfsbyHnYrmPVeYYc15Ic=
-  dependencies:
-    browserchannel "^2.0"
-    through "^2.3.4"
-
 racer-bundle@^0.4.0:
   version "0.4.0"
   resolved "https://npm.lever.co/racer-bundle/-/racer-bundle-0.4.0.tgz#8e0559e794f3f3b12ef5ff746b03cb37e5646a24"
@@ -4937,6 +4939,16 @@ racer-bundle@^0.4.0:
     common-shakeify "^0.6.2"
     exorcist "^1.0.1"
     minify-stream "^1.2.0"
+
+racer-highway@^8.1.0:
+  version "8.1.0"
+  resolved "https://npm.lever.co/racer-highway/-/racer-highway-8.1.0.tgz#8e4635375feea4ffbf83c476b36e4937ab2f5e55"
+  integrity sha512-JQ3XiFSdBSMYk5IWr6IXeWH9w4DikO2eXyFOPQ2W0KKZ/V51bJuFtQJkAQ8zrtjkm0MVdtwf3/hLLgxRyzcJIg==
+  dependencies:
+    browserchannel "^2.0"
+    extend "^2.0.0"
+    through "^2.3.4"
+    ws "~1.1"
 
 racer@^0.9.10:
   version "0.9.10"
@@ -6160,6 +6172,11 @@ typescript@^3.7.4:
   resolved "https://npm.lever.co/typescript/-/typescript-3.7.4.tgz#1743a5ec5fef6a1fa9f3e4708e33c81c73876c19"
   integrity sha512-A25xv5XCtarLwXpcDNZzCGvW2D1S3/bACratYBx2sax8PefsFhlYmkQicKHvpYflFS8if4zne5zT5kpJ7pzuvw==
 
+ultron@1.0.x:
+  version "1.0.2"
+  resolved "https://npm.lever.co/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
+  integrity sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=
+
 umd@^3.0.0, umd@^3.0.3:
   version "3.0.3"
   resolved "https://npm.lever.co/umd/-/umd-3.0.3.tgz#aa9fe653c42b9097678489c01000acb69f0b26cf"
@@ -6578,6 +6595,14 @@ ws@^6.2.1:
   integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
     async-limiter "~1.0.0"
+
+ws@~1.1:
+  version "1.1.5"
+  resolved "https://npm.lever.co/ws/-/ws-1.1.5.tgz#cbd9e6e75e09fc5d2c90015f21f0c40875e0dd51"
+  integrity sha512-o3KqipXNUdS7wpQzBHSe180lBGO60SoK0yVo3CYJgb2MkobuWuBX6dhkYP5ORCLd55y+SaflMOV5fqAB53ux4w==
+  dependencies:
+    options ">=0.0.5"
+    ultron "1.0.x"
 
 xdg-basedir@^3.0.0:
   version "3.0.0"
