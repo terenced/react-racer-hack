@@ -4,11 +4,7 @@ import * as Socket from "racer-highway/lib/browser/socket";
 const DEFAULT_CLIENT_OPTIONS = {
   base: "/channel",
   reconnect: true,
-  browserChannelOnly: false,
-  srvProtocol: undefined,
-  srvHost: undefined,
-  srvPort: undefined,
-  srvSecurePort: undefined,
+  browserChannelOnly: true,
   timeout: 10000,
   timeoutIncrement: 10000
 };
