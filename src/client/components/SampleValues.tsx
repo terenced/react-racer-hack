@@ -1,13 +1,34 @@
 import * as React from "react";
+
+import { fetch } from "../../react-racer/utils"
 import { useModel } from "../../react-racer/hooks/useModel";
+
+interface Dog {
+  id: string;
+  name: string;
+  breed: string;
+}
 
 const SampleValues = () => {
   const $model = useModel();
-  const events = $model.root.eventNames();
+  const [dogs, setDogs] = React.useState<Dog[]>([]);
+
+  React.useEffect(() => {
+    async function fetchDogs() {
+      const query = $model.query("dogs", { name: { $nin: [null, ""] } });
+      const $dogs = await fetch(query);
+      // @ts-ignore
+      const dogs = await $dogs.get();
+      setDogs(dogs);
+    }
+    fetchDogs();
+  }, [$model.data]);
+
+  console.log("dogs", dogs);
   return (
     <ul>
-      {events.map(e => (
-        <li key={e}>{e}</li>
+      {dogs.map((d: Dog) => (
+        <li key={d.id}>{d.name}</li>
       ))}
     </ul>
   );
