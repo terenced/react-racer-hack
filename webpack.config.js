@@ -49,7 +49,11 @@ const clientConfig = {
   entry: {
     client: "./src/client/index.tsx",
   },
-  ...common
+  ...common,
+  optimization: {
+    sideEffects: true,
+    usedExports: false,
+  },
 };
 
 module.exports = [ serverConfig, clientConfig ];
