@@ -20,6 +20,14 @@ racer.Model.prototype._createSocket = function() {
   return new Socket(clientOptions);
 };
 
+function logEvents(path) {
+  if (path == null) path = '';
+  this.on('all', path + '**', console.log.bind(console));
+};
+
+racer.Model.prototype.logEvents = logEvents;
+
+
 function createModel(bundle) {
   const data = JSON.parse(bundle);
   if (racer.util.isServer) {
@@ -33,5 +41,6 @@ function createModel(bundle) {
 export default function createRacerStore(bundle: string) {
   const $model = createModel(bundle);
   $model.root.unloadDelay = 3000;
+  $model.logEvents();
   return { $model };
 }
