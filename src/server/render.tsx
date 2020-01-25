@@ -14,7 +14,8 @@ export default (racerBundle) => {
   <html lang="en">
     <head>
       <meta charset="UTF-8">
-      <title>Title</title>
+      <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
+      <title>React-Racer Demo</title>
     </head>
     <body>
       <div id="app">${content}</div>
