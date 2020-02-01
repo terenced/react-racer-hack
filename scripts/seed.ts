@@ -1,4 +1,4 @@
-import connect from "./connect";
+import { connect } from "../src/server/backend";
 import { create, CreateType } from "../src/random/generate";
 
 async function seed($model, type: CreateType, cb: (err: any) => void) {
@@ -20,8 +20,11 @@ async function seed($model, type: CreateType, cb: (err: any) => void) {
 }
 
 const $model = connect();
+// @ts-ignore
+$model.connection?.debug = true;
 
-(async () => seed($model, "dog", err => {
+(async () =>
+  seed($model, "dog", err => {
     if (err) {
       console.error(err);
       process.exit(1);
@@ -29,5 +32,4 @@ const $model = connect();
     seed($model, "cat", err => {
       process.exit(0);
     });
-  })
-)();
+  }))();

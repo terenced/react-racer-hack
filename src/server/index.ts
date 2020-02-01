@@ -1,15 +1,16 @@
 import * as express from "express";
-import * as racer from "racer";
-import * as shareDbMongo from "sharedb-mongo";
 import * as highway from "racer-highway";
+import * as racer from "racer";
+
 import render from "./render";
+import { createBackend } from "./backend";
 
 racer.use(require("racer-bundle"));
-const backend = racer.createBackend({
-  db: shareDbMongo("mongodb://localhost:27017/react-racer-hack")
-});
+
+const backend = createBackend();
 
 const handlers = highway(backend);
+
 
 const app = express();
 app.use("/dist", express.static("dist"));

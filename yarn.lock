@@ -517,7 +517,7 @@ async-limiter@~1.0.0:
   resolved "https://npm.lever.co/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
-async@^1.4.2, async@^1.5.2:
+async@^1.4.2, async@^1.5.0, async@^1.5.2:
   version "1.5.2"
   resolved "https://npm.lever.co/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
   integrity sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=
@@ -2267,6 +2267,11 @@ dot-prop@^4.1.0:
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
   dependencies:
     is-obj "^1.0.0"
+
+double-ended-queue@^2.1.0-0:
+  version "2.1.0-0"
+  resolved "https://npm.lever.co/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+  integrity sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
 
 duplexer2@^0.1.2, duplexer2@~0.1.0, duplexer2@~0.1.2:
   version "0.1.4"
@@ -5117,6 +5122,25 @@ readdirp@~3.3.0:
   dependencies:
     picomatch "^2.0.7"
 
+redis-commands@^1.2.0:
+  version "1.5.0"
+  resolved "https://npm.lever.co/redis-commands/-/redis-commands-1.5.0.tgz#80d2e20698fe688f227127ff9e5164a7dd17e785"
+  integrity sha512-6KxamqpZ468MeQC3bkWmCB1fp56XL64D4Kf0zJSwDZbVLLm7KFkoIcHrgRvQ+sk8dnhySs7+yBg94yIkAK7aJg==
+
+redis-parser@^2.6.0:
+  version "2.6.0"
+  resolved "https://npm.lever.co/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
+  integrity sha1-Uu0J2srBCPGmMcB+m2mUHnoZUEs=
+
+redis@^2.6.0:
+  version "2.8.0"
+  resolved "https://npm.lever.co/redis/-/redis-2.8.0.tgz#202288e3f58c49f6079d97af7a10e1303ae14b02"
+  integrity sha512-M1OkonEQwtRmZv4tEWF2VgpG0JWJ8Fv1PhlgT5+B+uNq2cA3Rt1Yt/ryoR+vQNOQcIEgdCdfH0jr3bDpihAw1A==
+  dependencies:
+    double-ended-queue "^2.1.0-0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.6.0"
+
 regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://npm.lever.co/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
@@ -5527,7 +5551,16 @@ sharedb-mongo@^1.0.0-beta.11:
     mongodb "^2.1.2 || ^3.0.0"
     sharedb "^1.0.0-beta"
 
-sharedb@^1.0.0-beta:
+sharedb-redis-pubsub@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.lever.co/sharedb-redis-pubsub/-/sharedb-redis-pubsub-1.0.0.tgz#5371a1304b043ca324d901c7afab9647f2af69a0"
+  integrity sha512-uNOe5JBvuoNFxR9j/ZHbrzkHNE4LNFZPoDEdhljJHJCdQY7BoKBUqBcGxgQdj0IqMbRb4MlZz55wc2ClzzcQ3Q==
+  dependencies:
+    async "^1.5.0"
+    redis "^2.6.0"
+    sharedb "^1.0.0"
+
+sharedb@^1.0.0, sharedb@^1.0.0-beta:
   version "1.1.0"
   resolved "https://npm.lever.co/sharedb/-/sharedb-1.1.0.tgz#89c1a23823c8ac36f1a3a3359fcf46efc4411ff1"
   integrity sha512-0ZuWogy4VFe7PghoqoJw+zLMhKn6lHPE3OSJEeka3FDS2zUTebdMz5qABBKalBslFE/+fR9fIz+sDGJ3RiHGYQ==
@@ -6215,10 +6248,10 @@ typedarray@^0.0.6:
   resolved "https://npm.lever.co/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.7.4:
-  version "3.7.4"
-  resolved "https://npm.lever.co/typescript/-/typescript-3.7.4.tgz#1743a5ec5fef6a1fa9f3e4708e33c81c73876c19"
-  integrity sha512-A25xv5XCtarLwXpcDNZzCGvW2D1S3/bACratYBx2sax8PefsFhlYmkQicKHvpYflFS8if4zne5zT5kpJ7pzuvw==
+typescript@^3.7.5:
+  version "3.7.5"
+  resolved "https://npm.lever.co/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
+  integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
 
 ultron@1.0.x:
   version "1.0.2"
