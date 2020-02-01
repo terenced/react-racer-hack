@@ -1,32 +1,26 @@
 import * as React from "react";
-
 import { fetch } from "../../react-racer/utils";
 import { useModel } from "../../react-racer/hooks/useModel";
+import useQuery from "../../react-racer/hooks/useQuery";
 
 import AnimalList from "./AnimalList";
-import { Props as AnimalProps } from "./AnimalCard";
 import AddButton from "./AddButton";
+import { createCat } from "../../random/generate";
 
 const CatList = () => {
-  const $model = useModel();
-  const [cats, setCats] = React.useState<AnimalProps[]>([]);
+  const [cats, $cats] = useQuery("cats", {});
 
-  const query = $model.query("cats", {});
-  React.useEffect(() => {
-    async function fetchCat() {
-      const $cat = await fetch(query);
-      $model.subscribe(query);
-      // @ts-ignore
-      const cat = await $cat.get();
-      setCats(cat);
+  const onClick = React.useCallback(async () => {
+    if ($cats) {
+      const cat = await createCat();
+      //@ts-ignore
+      $cats.push(cat);
     }
-    fetchCat();
-    return () => $model.subscribe(query);
-  }, [$model, query]);
+  }, [$cats]);
 
   return (
     <div className="paper">
-      <AddButton text="Cat" />
+      <AddButton text="Cat" onClick={onClick} />
       <AnimalList animals={cats} type="cat" />
     </div>
   );
