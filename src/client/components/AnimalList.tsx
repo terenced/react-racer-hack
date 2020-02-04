@@ -15,7 +15,7 @@ export default function AnimalList({ animals, type }: Props) {
       flexWrap: "wrap",
       alignContent: "flex-start"
     }}>
-      {animals.map(animal => (
+      {animals && animals.map(animal => (
         <AnimalCard key={animal.id} {...animal} type={type} />
       ))}
     </div>
