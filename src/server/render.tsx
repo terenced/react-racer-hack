@@ -5,9 +5,9 @@ import App from "../client/components/App";
 import createRacerStore from "../react-racer/createRacerStore";
 
 export default (racerBundle) => {
-  const content = renderToString(
-    <App store={createRacerStore(racerBundle)} />
-  );
+  // const content = renderToString(
+  //   <App store={createRacerStore(racerBundle)} />
+  // );
 
   return `
   <!DOCTYPE html>
@@ -18,7 +18,7 @@ export default (racerBundle) => {
       <title>React-Racer Demo</title>
     </head>
     <body>
-      <div id="app">${content}</div>
+      <div id="app"></div>
       <script id="racer-data-bundle" type="application/json">${racerBundle}</script>
       <script src="/dist/client.js"></script>
     </body>
