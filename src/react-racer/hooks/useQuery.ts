@@ -1,59 +1,58 @@
 import { isEqual } from "lodash";
-import { useRef, useState, useEffect, useReducer } from "react";
+import { useEffect, useMemo, useReducer, useRef, useCallback } from "react";
 import { useModel } from "./useModel";
 
+const REF_PREFIX = "_reactRacer.hooks.queries";
+
+const getRefPath = (id: string, collectionName: string, queryHash: string) =>
+  `${REF_PREFIX}.${id}.${collectionName}`;
+
 export default function useQuery(collectionName: string, query: object = {}) {
-  const $model = useModel();
-  const $query = $model.query(collectionName, query);
   const [, forceRender] = useReducer(s => s + 1, 0);
 
-  const latestQuery = useRef();
-  const latestItems = useRef([]);
+  const $model = useModel();
+  const hookId = useMemo(() => $model.id(), [collectionName, query]);
+  const $query = useMemo(() => $model.query(collectionName, query), [
+    collectionName,
+    query
+  ]);
 
-  function checkForUpdates(err: any = null) {
-    if (err) {
-      console.log(err);
-    }
-    try {
-      // @ts-ignore
-      const newItems = latestQuery.current.get();
-      console.log("Checking", newItems, isEqual(newItems, latestItems.current));
-
-      if (isEqual(newItems, latestItems.current)) {
-        return;
-      }
-
-      latestItems.current = newItems;
-    } catch (error) {
-      console.error(error);
-    }
-
-    forceRender();
-  }
-
-  function subscribe() {
-    if ($query === latestQuery.current) {
-      return;
-    }
-    console.log("subscribe", $query);
-    $model.subscribe([$query], checkForUpdates);
-    // items = $query.get(); 
-  }
+  const refPath = useMemo(
+    () => getRefPath(hookId, collectionName, $query.hash),
+    [hookId, collectionName, $query.hash]
+  );
 
   useEffect(() => {
-    subscribe();
+    $model.subscribe($query);
+  }, [$query]);
+
+  let itemsRef = useRef();
+  let scopedRef = useRef();
+
+  const onChange = useCallback(() => {
+      // @ts-ignore
+      itemsRef.current = scopedRef.current.get();
+      console.log("onChange -> force render");
+      forceRender();
+    },
+    [scopedRef.current]
+  );
+
+  useEffect(() => {
+    if (!scopedRef.current) {
+      console.log("> creating ref", refPath);
+      scopedRef.current = $query.ref(refPath);
+    }
+
+    console.log("Setting up listener");
+    // @ts-ignore
+    scopedRef.current.on("all", onChange);
+
+    return () => {
+      console.log("Removing listener");
+      $model.removeRef(refPath);
+    };
   }, []);
 
-  useEffect(() => {
-    latestQuery.current = $query;
-    latestItems.current = $query.get();
-  });
-
-  useEffect(() => {
-    checkForUpdates();
-    // @ts-ignore
-    return () => latestQuery.current.unsubscribe();
-  }, [$model.data]);
-
-  return [latestItems.current, $query];
+  return [itemsRef.current || [], $query];
 }

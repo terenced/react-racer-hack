@@ -1,6 +1,4 @@
 import * as React from "react";
-import { fetch } from "../../react-racer/utils";
-import { useModel } from "../../react-racer/hooks/useModel";
 import useQuery from "../../react-racer/hooks/useQuery";
 
 import AnimalList from "./AnimalList";
