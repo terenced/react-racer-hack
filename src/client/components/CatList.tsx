@@ -6,7 +6,7 @@ import AnimalList from "./AnimalList";
 import AddButton from "./AddButton";
 import { createCat } from "../../random/generate";
 
-const CatList = () => {
+const CatList = ({ showImages }) => {
   const [cats, $cats] = useQuery("cats", {});
   const $model = useModel();
 
@@ -14,14 +14,14 @@ const CatList = () => {
     if ($cats) {
       const cat = await createCat();
       //@ts-ignore
-      $model.add('cats', cat);
+      $model.add("cats", cat);
     }
   }, [$cats]);
 
   return (
     <div className="paper">
       <AddButton text="Cat" onClick={onClick} />
-      <AnimalList animals={cats} type="cat" />
+      <AnimalList animals={cats} type="cat" showImages={showImages} />
     </div>
   );
 };

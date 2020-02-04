@@ -1,34 +1,26 @@
 import * as React from "react";
 
-import { fetch } from "../../react-racer/utils";
+import useQuery from "../../react-racer/hooks/useQuery";
 import { useModel } from "../../react-racer/hooks/useModel";
 
 import AnimalList from "./AnimalList";
-import { Props as AnimalProps } from "./AnimalCard";
 import AddButton from "./AddButton";
+import { createDog } from "../../random/generate";
 
-const DogList = () => {
+const DogList = ({ showImages } ) => {
+  const [dogs, $dogs] = useQuery("dogs", {});
   const $model = useModel();
-  const [dogs, setDogs] = React.useState<AnimalProps[]>([]);
 
-  console.log("$model", $model);
-  const query = $model.query("dogs", {});
-  React.useEffect(() => {
-    async function fetchDogs() {
-      const $dogs = await fetch(query);
-      $model.subscribe(query);
-      // @ts-ignore
-      const dogs = await $dogs.get();
-      setDogs(dogs);
-    }
-    fetchDogs();
-    return () => $model.subscribe(query);
-  }, [$model, query]);
+  const onClick = React.useCallback(async () => {
+      const dog = await createDog();
+      //@ts-ignore
+      $model.add('dogs', dog);
+  }, [$model]);
 
   return (
     <div className="paper">
-      <AddButton text="Dog" />
-      <AnimalList animals={dogs} type="dog" />
+      <AddButton text="Dog" onClick={onClick}/>
+      <AnimalList animals={dogs} type="dog" showImages={showImages}/>
     </div>
   );
 };

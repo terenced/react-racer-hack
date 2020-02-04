@@ -8,6 +8,7 @@ export interface Props {
   bio: string;
   imageUrl?: string;
   type: AnimalType;
+  showImages?: boolean;
 }
 
 interface IconProps {
@@ -33,16 +34,18 @@ const Title = ({ name, type }: TitleProps) => {
   );
 };
 
-const AnimalCard = ({ name, type, imageUrl }: Props) => {
+const AnimalCard = ({ name, type, imageUrl, showImages }: Props) => {
   return (
     <div style={{ padding: 5 }}>
       <Title name={name} type={type} />
-      <img
-        src={imageUrl || "https://www.placehold.it/200x200"}
-        alt={name}
-        width={200}
-        height={200}
-      />
+      {showImages && (
+        <img
+          src={imageUrl || "https://www.placehold.it/75x75"}
+          alt={name}
+          width={75}
+          height={75}
+        />
+      )}
     </div>
   );
 };
