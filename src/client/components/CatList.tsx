@@ -7,16 +7,14 @@ import AddButton from "./AddButton";
 import { createCat } from "../../random/generate";
 
 const CatList = ({ showImages }) => {
-  const [cats, $cats] = useQuery("cats", {});
+  const [cats, $query] = useQuery("cats", {});
   const $model = useModel();
 
   const onClick = React.useCallback(async () => {
-    if ($cats) {
-      const cat = await createCat();
-      //@ts-ignore
-      $model.add("cats", cat);
-    }
-  }, [$cats]);
+    const cat = await createCat();
+    //@ts-ignore
+    $model.add("cats", cat);
+  }, [$query]);
 
   return (
     <div className="paper">
