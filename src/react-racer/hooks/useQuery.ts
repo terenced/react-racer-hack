@@ -32,7 +32,7 @@ export default function useQuery(collectionName: string, query: object = {}) {
   const onChange = useCallback(() => {
       // @ts-ignore
       itemsRef.current = scopedRef.current.get();
-      console.debug("onChange -> force render");
+      console.debug("useQuery.onChange -> force render");
       forceRender();
     },
     [scopedRef.current]
@@ -40,16 +40,16 @@ export default function useQuery(collectionName: string, query: object = {}) {
 
   useEffect(() => {
     if (!scopedRef.current) {
-      console.debug("Creating ref", refPath);
+      console.debug("useQuery: Creating local ref", refPath);
       scopedRef.current = $query.ref(refPath);
     }
 
-    console.debug("Setting up listener");
+    console.debug("useQuery: Setting up listener");
     // @ts-ignore
     scopedRef.current.on("all", onChange);
 
     return () => {
-      console.debug("Removing listener", hookId, refPath);
+      console.debug("useQuery: Removing listener", hookId, refPath);
       $model.removeRef(refPath);
     };
   }, []);
