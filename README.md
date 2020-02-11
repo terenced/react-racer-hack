@@ -46,11 +46,11 @@ The implementation was inspired by [React-Redux Hooks](https://react-redux.js.or
 
 `useQuery` - Used to query the racer model. Under the hood, it subscribes to the query, creates a reference `_reactRacer.hooks.queries.HOOK_ID.COLLECTION_NAME`, and triggers a re-render when the reference is updated.
 
+`useScope` - Used to get a scoped model. Under the hood, it sets up the `on` and `off`, and triggers a re-render when the scoped model is updated.
+
 ##### TO-DO
 
 Not sure about the naming/uses.
-
-`useGet` or `getDoc` - Fetches a model path, subscripts to it, and returns a deep copy and the model.
 
 `useGetOnce` or `getDocOnce` - Same as `useGet`/`useDoc`, but doesn't subscribe
 
