@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as emoji from "node-emoji";
+import useScope from "../../react-racer/hooks/useScope";
 
 export type AnimalType = "cat" | "dog";
 export interface Props {
@@ -34,9 +35,16 @@ const Title = ({ name, type }: TitleProps) => {
   );
 };
 
-const AnimalCard = ({ name, type, imageUrl, showImages }: Props) => {
+const AnimalCard = ({ id, name, type, imageUrl, showImages }: Props) => {
+  const [_, $scoped] = useScope('_page.selected');
+  const onClick = React.useCallback(() => {
+    if ($scoped) {
+      // @ts-ignore
+      $scoped.set({id, type})
+    }
+  }, [$scoped])
   return (
-    <div style={{ padding: 5 }}>
+    <div style={{ padding: 5 }} onClick={onClick}>
       <Title name={name} type={type} />
       {showImages && (
         <img
